@@ -52,6 +52,42 @@ public:
         }
         return head;
     }
+    SinglyLinkListNode *insertNodeAtPosition(SinglyLinkListNode *head, int data, int pos)
+    {
+        SinglyLinkListNode *node = new SinglyLinkListNode(data);
+        if (head == NULL)
+        {
+            return node;
+        }
+        if (!pos)
+        {
+            node->next = head;
+            return node;
+        }
+        SinglyLinkListNode *temp;
+        temp = head;
+        for (int i = 1; i < pos; i++)
+            temp = temp->next;
+        node->next = temp->next;
+        temp->next = node;
+        return head;
+    }
+    SinglyLinkListNode *deleteNode(SinglyLinkListNode *head, int pos)
+    {
+        SinglyLinkListNode *temp;
+        temp = head;
+        if (!temp || !temp->next)
+            return NULL;
+        if (!pos)
+        {
+            head = temp->next;
+            return head;
+        }
+        for (int i = 1; i < pos; i++)
+            temp = temp->next;
+        temp->next = temp->next->next;
+        return head;
+    }
     void printLinkedList(SinglyLinkListNode *head)
     {
         if (head == NULL)
@@ -77,6 +113,18 @@ int main()
     cin.tie(0);
     cout.tie(0);
 
+    /*
+    #Input format
+    --------
+    t
+    n
+    l_1
+    l_2
+    ...
+    l_n
+    x y
+    --------
+    */
     int tt;
     cin >> tt;
     while (tt--)
@@ -90,10 +138,18 @@ int main()
             int llist_item;
             cin >> llist_item;
             // cin.ignore(numeric_limits<streamsize>::max(), '\n');
-            SinglyLinkListNode *llist_head = llist->insertNodeAtHead(llist->head, llist_item);
+            SinglyLinkListNode *llist_head = llist->insertNodeAtTail(llist->head, llist_item);
             llist->head = llist_head;
             // llist->insertNodeAtTail(llist->head, llist_item); /*I don't why this doesn't work*/
         }
+        int data, pos;
+        cin >> data >> pos;
+        SinglyLinkListNode *llist_head = llist->insertNodeAtPosition(llist->head, data, pos);
+        llist->head = llist_head;
+        int delpos;
+        cin >> delpos;
+        SinglyLinkListNode *llist_head1 = llist->deleteNode(llist->head, delpos);
+        llist->head = llist_head1;
         llist->printLinkedList(llist->head);
     }
 
