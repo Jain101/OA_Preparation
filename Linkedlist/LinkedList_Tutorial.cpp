@@ -56,9 +56,7 @@ public:
     {
         SinglyLinkListNode *node = new SinglyLinkListNode(data);
         if (head == NULL)
-        {
             return node;
-        }
         if (!pos)
         {
             node->next = head;
@@ -79,14 +77,73 @@ public:
         if (!temp || !temp->next)
             return NULL;
         if (!pos)
-        {
-            head = temp->next;
-            return head;
-        }
+            return temp->next;
         for (int i = 1; i < pos; i++)
             temp = temp->next;
         temp->next = temp->next->next;
         return head;
+    }
+    SinglyLinkListNode *reverse(SinglyLinkListNode *head)
+    {
+        SinglyLinkListNode *prev, *curr, *next;
+        prev = NULL;
+        curr = next = head;
+        while (next)
+        {
+            curr = next;
+            next = curr->next;
+            curr->next = prev;
+            prev = curr;
+        }
+        return curr;
+    }
+    bool compare_lists(SinglyLinkListNode *head1, SinglyLinkListNode *head2)
+    {
+        SinglyLinkListNode *temp1, *temp2;
+        temp1 = head1;
+        temp2 = head2;
+        while (temp1 && temp2)
+        {
+            if (temp1->data == temp2->data)
+            {
+                temp1 = temp1->next;
+                temp2 = temp2->next;
+            }
+            else
+                return false;
+        }
+        return !(temp1 || temp2);
+    }
+    void reversePrint_estack(SinglyLinkListNode *head)
+    {
+        SinglyLinkListNode *temp;
+        temp = head;
+        if (temp == NULL)
+            return;
+        stack<int> st;
+        while (temp)
+        {
+            st.push(temp->data);
+            temp = temp->next;
+        }
+        while (!st.empty())
+        {
+            cout << st.top() << '\n';
+            st.pop();
+        }
+    }
+    void rev(SinglyLinkListNode *head)
+    {
+        if (head == NULL)
+            return;
+        rev(head->next);
+        cout << head->data << '\n';
+    }
+    void reversePrint_istack(SinglyLinkListNode *head)
+    {
+        SinglyLinkListNode *temp;
+        temp = head;
+        rev(temp);
     }
     void printLinkedList(SinglyLinkListNode *head)
     {
