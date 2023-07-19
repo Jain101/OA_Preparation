@@ -4,7 +4,11 @@ using namespace std;
 class Solution
 {
 public:
-    // 19.07.2023 - https://leetcode.com/problems/non-overlapping-intervals/description/
+    /*
+     * Date : 19.07.2023
+     * Problem : https://leetcode.com/problems/non-overlapping-intervals/description/
+     * Approach : Greedy
+     */
     static bool cmp(vector<int> &a, vector<int> &b)
     {
         if (a[1] == b[1])
@@ -29,4 +33,9 @@ public:
         }
         return n - count;
     }
+    /*
+     * Analysis
+     * TC - O(nlogn) + O(n) ~ O(nlogn)
+     * SC - O(logn)[STL sort() uses a hybrid of Quick, Heap and Insertion Sort, with a WC SC O(log⁡n)]
+     */
 };
