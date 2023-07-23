@@ -3,7 +3,7 @@ using namespace std;
 
 struct TreeNode
 {
-    int data;
+    int val;
     TreeNode *left;
     TreeNode *right;
     TreeNode() : val(0), left(NULL), right(NULL) {}
@@ -167,13 +167,34 @@ vector<vector<int>> zigzagLevelOrderTraversal(TreeNode *root)
     }
     return ans;
 }
+void dfs(TreeNode *node)
+{
+    if (node == NULL)
+        return;
+    TreeNode *temp;
+    temp = node->left;
+    node->left = node->right;
+    node->right = temp;
+    dfs(node->left);
+    dfs(node->right);
+}
+TreeNode *invertTree(TreeNode *root)
+{
+    dfs(root);
+    return root;
+}
+/*
+ * Analysis
+ * TC - O(n)
+ * ASC - O(h) : h is the height of tree ~ logn
+ */
 
 int main()
 {
     freopen("C:/Users/91626/Documents/IO/in.txt", "r", stdin);
     freopen("C:/Users/91626/Documents/IO/out.txt", "w", stdout);
 
-    Solution myTree;
+    TreeOperations myTree;
     Node *root = NULL;
 
     int t, data;
