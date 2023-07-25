@@ -1,13 +1,6 @@
-## Strategy/Plan for DSA
+## Strategies for DSA/CP
 
-# 16 Jul 2023
-[]Trees[Easy] - all
-
-# 17 Jul 2023
-[] Trees[Medium] - all
-
-# 18 Jul 2023
-[x] Linked List[Easy] - all
-
-# 19 Jul 2023
-Linked List[Medium] - all
+0. Be creative, open-minded, able-to-recognize-patterns, able-to-think-out-of-box.
+1. Broaden your knowledge horizon, improve problem solving abilities and create new customised data structures and algorithms which will allow you to solve problems and that too quickly during contests/OA, so that you can win/pass.
+2. Do optimizations, it is from the greed to optimize it further that you learn some new concepts/techniques/strategies.
+3. Do problem-based-learning, take a problem and try to solve, if can't then find out what you need to learn to be able to solve this problem, learn it and then solve that problem. This will provide you motivation to learn the concept/technique faster, make you better in its implementation during problem solving and will commit to your LTM.
