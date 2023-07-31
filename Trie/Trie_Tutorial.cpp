@@ -83,24 +83,22 @@ public:
 /*
 #include <bits/stdc++.h>
 
-class Node{
-public:
-    Node* children[26];
-    bool flag=false;
+struct Node
+{
+    Node *links[26];
     int countW=0;
     int countP=0;
-
-    bool containsKey(char ch){
-        return children[ch-'a']!=NULL;
+    bool containsKey(char ch)
+    {
+        return links[ch - 'a'] != NULL;
     }
-    void put(char ch, Node* node){
-        children[ch-'a'] = node;
+    void put(char ch, Node *node)
+    {
+        links[ch - 'a'] = node;
     }
-    Node* get(char ch){
-        return children[ch-'a'];
-    }
-    void setEndofWord(){
-        flag=true;
+    Node *get(char ch)
+    {
+        return links[ch - 'a'];
     }
 };
 class Trie{
@@ -109,35 +107,48 @@ class Trie{
     Trie(){
         root = new Node();
     }
-
     void insert(string &word){
         Node* node = root;
         for(char ch: word){
             if(!node->containsKey(ch)){
-                node->put(ch,node);
+                node->put(ch,new Node());
             }
             node = node->get(ch);
+            node->countP++;
         }
-        node->setEndofWord();
         node->countW++;
     }
 
     int countWordsEqualTo(string &word){
         Node* node = root;
         for(char ch: word){
-            if(!node->containsKey(ch)){
+            if(!node->containsKey(ch))
                 return 0;
             node = node->get(ch);
         }
         return node->countW;
     }
 
-    int countWordsStartingWith(string &prefix){
-        // Write your code here.
+    int countWordsStartingWith(string &word){
+        Node* node = root;
+        for(char ch: word){
+            if(!node->containsKey(ch))
+                return 0;
+            node = node->get(ch);
+        }
+        return node->countP;
     }
 
     void erase(string &word){
-        // Write your code here.
+        Node* node = root;
+        for(char ch: word){
+            if(node->containsKey(ch)){
+                node = node->get(ch);
+                node->countP--;
+            }
+            else return;
+        }
+        node->countW--;
     }
 };
 
