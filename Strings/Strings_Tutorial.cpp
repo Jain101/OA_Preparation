@@ -1,6 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+/*         String Hashing      */
 /**
  * Problem : Count unique strings in a string vector
  * 1. Brute Force Approach : sort the strings lxly, count the partitions by comparing the strings
