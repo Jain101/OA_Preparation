@@ -33,11 +33,38 @@ void StaticRangeSumQueries2() // sparsh table approach
     vector<int> x(n + 1);
     for (int i = 1; i <= n; i++)
         cin >> x[i];
-
+    vector<int> lg(n + 1);
+    lg[1] = 0;
+    for (int i = 2; i <= n; i++)
+        lg[i] = lg[i / 2] + 1;
+    // preprocessing sparse table - O(n*logn)
+    vector<vector<long long>> sp(lg[n] + 1, vector<long long>(n));
+    for (int i = 0; i < n; i++)
+        sp[0][i] = x[i];
+    for (int i = 1; i <= lg[n]; i++)
+    {
+        for (int j = 0; j + (1 << i) <= n; j++)
+        {
+            sp[i][j] = sp[i - 1][j] + sp[i - 1][j + (1 << (i - 1))];
+        }
+    }
     while (q--)
     {
-        int a, b;
-        cin >> a >> b;
+        int l, r;
+        cin >> l >> r;
+        l--;
+        r--;
+        long long sum = 0;
+        //iterate through lg[i]
+        for (int i = lg[n]; i >= 0; i--)
+        {
+            if ((1 << i) <= (r - l + 1))
+            {
+                sum += sp[i][l];
+                l += (1 << i);
+            }
+        }
+        cout << sum << '\n';
     }
 }
 // sp[i][j] - start from j and take len=2^i subarray
@@ -85,7 +112,7 @@ int main()
     cin.tie(0);
     cout.tie(0);
 
-    StaticRangeMinQueries();
+    StaticRangeSumQueries2();
 
 #ifndef ONLINE_JUDGE
     cerr
