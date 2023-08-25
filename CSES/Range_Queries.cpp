@@ -1,6 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
-
+#define int long long
 const int K = 14, MAX_N = 200001;
 /**
  * Date : 07.08.2023
@@ -55,7 +55,7 @@ void StaticRangeSumQueries2() // sparsh table approach
         l--;
         r--;
         long long sum = 0;
-        //iterate through lg[i]
+        // iterate through lg[i]
         for (int i = lg[n]; i >= 0; i--)
         {
             if ((1 << i) <= (r - l + 1))
@@ -102,7 +102,38 @@ void StaticRangeMinQueries()
     }
 }
 
-int main()
+/**
+ * Date : 11.08.2023
+ * Problem 7
+ * Approach : use 2D prefix sums, why not segment tree,fenwick/BIT? coz it is static and there are no updates, so use static methods
+ * TC : O(NQ)[usaco] but it should be O(N^2 + Q)
+ */
+void ForestQueries()
+{
+    int n, q;
+    cin >> n >> q;
+    vector<vector<int>> tree_sum(n + 1, vector<int>(n + 1)); // 2D prefix sum array
+    // taking input & preprocessing
+    for (int i = 1; i <= n; i++)
+    {
+        for (int j = 1; j <= n; j++)
+        {
+            char ch;
+            cin >> ch;
+            tree_sum[i][j] = tree_sum[i - 1][j] + tree_sum[i][j - 1] - tree_sum[i - 1][j - 1] + (ch == '*');
+        }
+    }
+    // query processing
+    while (q--)
+    {
+        int y1, x1, y2, x2;
+        cin >> x1 >> y1 >> x2 >> y2;
+        int ans = tree_sum[x2][y2] - tree_sum[x1 - 1][y2] - tree_sum[x2][y1 - 1] + tree_sum[x1 - 1][y1 - 1];
+        cout << ans << '\n';
+    }
+}
+
+int32_t main()
 {
 #ifndef ONLINE_JUDGE
     freopen("C:/Users/91626/Documents/IO/in.txt", "r", stdin);
@@ -112,7 +143,7 @@ int main()
     cin.tie(0);
     cout.tie(0);
 
-    StaticRangeSumQueries2();
+    ForestQueries();
 
 #ifndef ONLINE_JUDGE
     cerr
