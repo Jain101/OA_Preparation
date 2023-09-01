@@ -38,7 +38,7 @@ using namespace std;
             cin >> v[i][j];    \
         }                      \
     }
-#define printV(v, a)       \
+#define printV1(v, a)      \
     REP(i, a, v.size(), 1) \
     cout << v[i] << " ";
 #define printV2(v, a)               \
@@ -71,10 +71,12 @@ void dfs(int i)
         if (!vis[u])
             dfs(u);
     }
+    // pushing the nodes after all dfs calls are done(stack full? now take out top and put it in ans)
     ans.push(i);
 }
 void toposort_DFS()
 {
+    // initialization
     cin >> n >> m;
     while (m--)
     {
@@ -83,21 +85,77 @@ void toposort_DFS()
         adj[a].pb(b);
     }
     memset(vis, false, sizeof vis);
+    // doing dfs on all nodes(!vis)
     REP(i, 1, n, 1)
     {
         if (!vis[i])
             dfs(i);
     }
+    // printing stack
     while (!ans.empty())
     {
         cout << ans.top() << ' ';
         ans.pop();
     }
 }
-
-void toposort_BFS()
+/**
+ * Date : 01.09.2023
+ * Problem : https://www.spoj.com/problems/TOPOSORT/
+ */
+vi adj[10001];
+int out_deg[10001];
+int in_deg[10001];
+bool vis[10001];
+vi ts;
+int n, m;
+void toposort_bfs()
 {
+    // initialization
+    cin >> n >> m;
+    memset(out_deg, 0, sizeof out_deg);
+    memset(in_deg, 0, sizeof in_deg);
+    memset(vis, false, sizeof vis);
+    ts.clear();
+    while (m--)
+    {
+        int a, b;
+        cin >> a >> b;
+        adj[a].pb(b);
+        out_deg[a]++;
+        in_deg[b]++;
+    }
+    // bfs
+    // min heap to get lexicographically smallest node all the time to push into ts
+    // take all nodes having in_deg=0 and do the operation and discard them,
+    // it will affect its neighbours so recalculate in_deg of neighbours, and continue the process
+    min_heap<int> pq;
+    REP(i, 1, n, 1)
+    {
+        if (in_deg[i] == 0)
+        {
+            pq.push(i);
+        }
+    }
+    while (!pq.empty())
+    {
+        int u = pq.top();
+        pq.pop();
+        ts.pb(u);
+        for (int &v : adj[u])
+        {
+            in_deg[v]--;
+            if (in_deg[v] == 0)
+                pq.push(v);
+        }
+    }
+    if (ts.size() == n)
+    {
+        printV1(ts, 0);
+    }
+    else
+        cout << "Sandro fails.";
 }
+
 int main()
 {
 #ifndef ONLINE_JUDGE
@@ -110,6 +168,7 @@ int main()
 
     TC
     {
+        toposort_bfs();
     }
 
 #ifndef ONLINE_JUDGE
