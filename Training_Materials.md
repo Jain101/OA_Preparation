@@ -5,10 +5,12 @@
 # Topological Sort
 >NOTES
 1. Every DAG has atleast one topological ordering
+2. wanna check a cycle in DAG? check if topo sort is possible or not
 
 >Problems:
 1. https://www.spoj.com/problems/TOPOSORT/
-2. 
+2. https://leetcode.com/problems/course-schedule/description/
+3. 
 
 
 >References:
