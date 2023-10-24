@@ -116,10 +116,10 @@ int smallestInRotatedArray(vi &a)
 
 ll last_true(ll lo, ll hi, ll N)
 {
-    lo--;
+    // lo--;
     while (lo < hi)
     {
-        ll mid = lo + (hi - lo + 1) / 2;
+        ll mid = lo + (hi - lo + 1) / 2; // to prevent INT overflow + infinite loop
         if (func(mid, N))
         {
             lo = mid;

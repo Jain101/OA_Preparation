@@ -29,10 +29,10 @@ UB = 5
 
 ## Problems Archive
 [+] [https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/description/](Find First and Last Position of Element in Sorted Array - LeetCode)
-[+] [https://leetcode.com/problems/first-bad-version/](First Bad Version - LeetCode)
+[] [https://leetcode.com/problems/first-bad-version/](First Bad Version - LeetCode)
 [+] [https://codeforces.com/contest/1201/problem/C]
 [+] [http://www.usaco.org/index.php?page=viewproblem2&cpid=666](Problem 1. Counting Haybales)	
-[+] [https://atcoder.jp/contests/abc149/tasks/abc149_e](E - Handshake)	
+[] [https://atcoder.jp/contests/abc149/tasks/abc149_e](E - Handshake)	
 
 
 
