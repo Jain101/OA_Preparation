@@ -1,64 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-#define int long long int
-#define INF 1e9
-#define INF64 1e18
-#define MOD 1e9 + 7
-#define PI 3.1415926536
-#define ll long long
-#define ld long double
-#define xx first
-#define yy second
-#define mp make_pair
-#define pb push_back
-#define pii pair<int, int>
-#define pll pair<ll, ll>
-#define vi vector<int>
-#define vvi vector<vector<int>>
-#define vll vector<ll>
-#define vii vector<pii>
-#define REP(i, a, b, t) for (int i = a; i <= b; i += t)
-#define REPr(i, a, b, t) for (int i = a; i >= b; i -= t)
-#define TC     \
-    int tt;    \
-    cin >> tt; \
-    while (tt--)
-
-#define inputV(v, a)       \
-    REP(_, a, v.size()-1, 1) \
-    {                      \
-        cin >> v[_];       \
-    }
-#define inputV2(v, a)          \
-    REP(i, a, v.size(), 1)     \
-    {                          \
-        REP(j, a, v.size(), 1) \
-        {                      \
-            cin >> v[i][j];    \
-        }                      \
-    }
-#define printV(v, a)       \
-    REP(i, a, v.size(), 1) \
-    cout << v[i] << " ";
-#define printV2(v, a)               \
-    REP(i, a, v.size(), 1)          \
-    {                               \
-        REP(j, a, v.size(), 1)      \
-        {                           \
-            cout << v[i][j] << " "; \
-        }                           \
-        cout << "\n";               \
-    }
-#define all(v) v.begin(), v.end()
-
-#define check(pred) (pred ? "YES\n" : "NO\n")
-#define yes cout << "YES\n"
-#define no cout << "NO\n"
-
-template <typename T>
-using min_heap = priority_queue<T, vector<T>, greater<T>>;
-
 /**bipartite check - "graph is bicolored in such a way that no 2 exact neighbors 
  * share the same color"
  * # Assumptions:

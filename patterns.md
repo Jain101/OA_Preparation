@@ -1,5 +1,5 @@
 # Graph
-1. bfs/dfs
+1. dfs/bfs(multi/single source)
 2. shortest path
 3. topological sort
 4. minimum spanning tree

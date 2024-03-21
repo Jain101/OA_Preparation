@@ -62,9 +62,7 @@ int main()
     cin.tie(0);
     cout.tie(0);
 
-    TC
-    {
-    }
+    
 
 #ifndef ONLINE_JUDGE
     cerr << "\ntime taken : " << (float)clock() / CLOCKS_PER_SEC << " secs"

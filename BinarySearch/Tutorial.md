@@ -4,23 +4,23 @@ Given: sorted array ‘a’
 
 ## Pre-defined APIs
 
-> binary_search(a.begin(), a.end(), t)
+> ```binary_search(a.begin(), a.end(), t)```
 1. 
 
-> lower_bound(a.begin(), a.end(), t)
-1. returns an index with value v such that v>=t, if value v exists
+> ```lower_bound(a.begin(), a.end(), t)```
+1. returns an index with value v such that ```v>=t```, if value v exists
 2. else, returns the index where it would be if it were inserted in order
 
-> upper_bound(a.begin(), a.end(), t) 
-1. returns an index with value v such that v>t
+> ```upper_bound(a.begin(), a.end(), t) ```
+1. returns an index with value v such that ```v>t```
 
 ## Custom APIs
 
-> first_true()
+> ```first_true()```
 
-> last_true()
+> ```last_true()```
 
-> sqrt()
+> ```sqrt()```
 
 ## Example 1
 a=[1,5,5,8,8,10], t=8
@@ -30,9 +30,11 @@ UB = 5
 ## Problems Archive
 [+] [https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/description/](Find First and Last Position of Element in Sorted Array - LeetCode)
 [] [https://leetcode.com/problems/first-bad-version/](First Bad Version - LeetCode)
-[+] [https://codeforces.com/contest/1201/problem/C]
+[+] [https://codeforces.com/contest/1201/problem/C](C. Max Median - Codeforces)
 [+] [http://www.usaco.org/index.php?page=viewproblem2&cpid=666](Problem 1. Counting Haybales)	
 [] [https://atcoder.jp/contests/abc149/tasks/abc149_e](E - Handshake)	
-
+[] [https://leetcode.com/problems/search-in-rotated-sorted-array/](Search in Rotated Sorted Array - LeetCode)
+[] http://www.usaco.org/index.php?page=viewproblem2&cpid=624  
+[+] [1873E - Building an Aquarium](https://codeforces.com/problemset/problem/1873/E)  
 
 
